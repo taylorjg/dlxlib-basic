@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Basic example of using DlxLib</title>
+</head>
+
+<body>
+  <pre id="messages" style="margin: 10px; background-color: aliceblue;"></pre>
+
+  <script src="https://unpkg.com/dlxlib@2.0.0-alpha.2/dist/dlxlib.js"></script>
+  <script>
+    var messages = document.getElementById('messages')
+    function logMessage(message) {
+      messages.innerHTML = messages.innerHTML + message + '<br />'
+    }
+    var matrix = [
+      [1, 0, 0, 0],
+      [0, 1, 1, 0],
+      [1, 0, 0, 1],
+      [0, 0, 1, 1],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0]
+    ]
+    function onStep(e) {
+      var message = 'step[' + e.stepIndex + ']: ' + JSON.stringify(e.partialSolution)
+      logMessage(message)
+    }
+    function onSolution(e) {
+      var message = 'solution[' + e.solutionIndex + ']: ' + JSON.stringify(e.solution)
+      logMessage(message)
+    }
+    var dlx = new dlxlib.Dlx()
+    dlx.on('step', onStep)
+    dlx.on('solution', onSolution)
+    dlx.solve(matrix)
+  </script>
+</body>
+
+</html>
