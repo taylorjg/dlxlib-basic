@@ -1,0 +1,14 @@
+{
+  "name": "dlxlib-basic",
+  "version": "1.0.0",
+  "description": "Very basic example of using dlxlib in a web page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Jonathan Taylor",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
